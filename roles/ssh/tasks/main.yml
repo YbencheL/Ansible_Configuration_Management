@@ -1,0 +1,7 @@
+- name: adding authorized_keys
+  ansible.builtin.shell: |
+    set -e
+    echo "Starting process..."
+    apt install -y sshpass
+    sshpass -p "{{ ssh_password }}" ssh-copy-id myserver@135.225.128.201
+    echo "Done."

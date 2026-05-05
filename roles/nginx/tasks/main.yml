@@ -1,0 +1,24 @@
+- name: installing nginx
+  ansible.builtin.shell: |
+    set -e
+    echo "installing nginx..."
+    apt install -y nginx
+    systemctl enable --now nginx
+    echo "Done."
+
+- name: generating ssl cert
+  ansible.builtin.shell: |
+    mkdir -p /etc/nginx/ssl
+    openssl req -x509 -days 365 -nodes -out /etc/nginx/ssl/inception.crt \
+    -keyout /etc/nginx/ssl/inception.key -subj \
+    "/C=FR/ST=IDF/L=Paris/O=42/OU=42/CN=135.225.128.201/UID=ybenchel"
+
+- name: Copy config file
+  ansible.builtin.copy:
+    src: ./../files/nginx.conf
+    dest: /etc/nginx/.
+
+- name: restaring nginx
+  ansible.builtin.service:
+    name: nginx
+    state: restarted

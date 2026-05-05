@@ -1,0 +1,16 @@
+- name: Copy tarball file
+  ansible.builtin.copy:
+    src: ./../files/website.zip
+    dest: /home/myserver/.
+
+- name: Extract website files to nginx directory
+  ansible.builtin.unarchive:
+    src: /home/myserver/website.zip
+    dest: /var/www/html/
+    remote_src: yes
+    creates: /var/www/html/feane-1.0.0
+
+- name: Clean up zip file
+  ansible.builtin.file:
+    path: /home/myserver/website.zip
+    state: absent
