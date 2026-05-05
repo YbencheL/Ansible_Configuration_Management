@@ -6,11 +6,6 @@ Automated infrastructure provisioning and deployment for Ubuntu servers using An
 **Server:** 135.225.128.201  
 **Primary Protocol:** HTTPS (TLS 1.3)
 
-## Github URL
-
-```
-https://github.com/YbencheL/Ansible_Configuration_Management
-```
 ---
 
 ## Table of Contents
@@ -460,6 +455,12 @@ ansible-playbook -i inventory.ini setup.yml --list-tasks
 - [Azure VM Security](https://docs.microsoft.com/en-us/azure/virtual-machines/security-recommendations)
 
 ---
+
+## Project insperation URL
+
+```
+https://roadmap.sh/projects/configuration-management
+```
 
 ## License
 
